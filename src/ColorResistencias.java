@@ -9,6 +9,7 @@ public class ColorResistencias {
     private JComboBox cbBanda2;
     private JComboBox cbBanda1;
     private JLabel lblResultado;
+    private JComboBox cbTolerancia;
 
     public ColorResistencias() {
 
@@ -25,6 +26,18 @@ public class ColorResistencias {
                 "Blanco"
         };
 
+        String[] tolerancias = {
+                "Marron ±1%",
+                "Rojo ±2%",
+                "Verde ±0.5%",
+                "Azul ±0.25%",
+                "Violeta ±0.1%",
+                "Gris ±0.05%",
+                "Dorado ±5%",
+                "Plateado ±10%"
+        };
+
+        cbTolerancia.setModel(new DefaultComboBoxModel<>(tolerancias));
         cbBanda1.setModel(new DefaultComboBoxModel<>(colores));
         cbBanda2.setModel(new DefaultComboBoxModel<>(colores));
         cbMultiplicador.setModel(new DefaultComboBoxModel<>(colores));
@@ -32,6 +45,34 @@ public class ColorResistencias {
         btnCalcular.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                String tolerancia;
+
+                switch (cbTolerancia.getSelectedIndex()) {
+                    case 0:
+                        tolerancia = "±1%";
+                        break;
+                    case 1:
+                        tolerancia = "±2%";
+                        break;
+                    case 2:
+                        tolerancia = "±0.5%";
+                        break;
+                    case 3:
+                        tolerancia = "±0.25%";
+                        break;
+                    case 4:
+                        tolerancia = "±0.1%";
+                        break;
+                    case 5:
+                        tolerancia = "±0.05%";
+                        break;
+                    case 6:
+                        tolerancia = "±5%";
+                        break;
+                    default:
+                        tolerancia = "±10%";
+                }
 
                 int banda1 = cbBanda1.getSelectedIndex();
                 int banda2 = cbBanda2.getSelectedIndex();
@@ -41,7 +82,7 @@ public class ColorResistencias {
 
                 double resultado = numero * Math.pow(10, multiplicador);
 
-                lblResultado.setText(resultado + " Ohmios");
+                lblResultado.setText(resultado + " Ω " + tolerancia);
             }
         });
     }
