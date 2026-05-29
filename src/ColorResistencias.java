@@ -10,6 +10,7 @@ public class ColorResistencias {
     private JComboBox cbBanda1;
     private JLabel lblResultado;
     private JComboBox cbTolerancia;
+    private JLabel lblImagen;
 
     public ColorResistencias() {
 
@@ -41,6 +42,9 @@ public class ColorResistencias {
         cbBanda1.setModel(new DefaultComboBoxModel<>(colores));
         cbBanda2.setModel(new DefaultComboBoxModel<>(colores));
         cbMultiplicador.setModel(new DefaultComboBoxModel<>(colores));
+
+        ImageIcon imagen = new ImageIcon(getClass().getResource("/Recursos/resistor.png"));
+        lblImagen.setIcon(imagen);
 
         btnCalcular.addActionListener(new ActionListener() {
             @Override
