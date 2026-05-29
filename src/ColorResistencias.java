@@ -45,4 +45,18 @@ public class ColorResistencias {
             }
         });
     }
+    public static void main(String[] args) {
+
+        JFrame frame = new JFrame("Calculadora de Resistencias");
+
+        frame.setContentPane(new ColorResistencias().panel1);
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        frame.pack();
+
+        frame.setLocationRelativeTo(null);
+
+        frame.setVisible(true);
+    }
 }
